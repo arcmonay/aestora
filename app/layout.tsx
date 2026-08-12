@@ -1,52 +1,45 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Serif } from "next/font/google";
-import { ChartIndex } from "@/components/ChartIndex";
+import { Cormorant_Garamond, Sora } from "next/font/google";
+import { CompareBar } from "@/components/CompareBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { CartProvider } from "@/lib/cart-context";
+import { CompareProvider } from "@/lib/compare-context";
 import "./globals.css";
 
-const sans = IBM_Plex_Sans({
-  variable: "--font-ibm-sans",
+const display = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+});
+
+const sans = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
 
-const serif = IBM_Plex_Serif({
-  variable: "--font-ibm-serif",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-const mono = IBM_Plex_Mono({
-  variable: "--font-ibm-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
 export const metadata: Metadata = {
   title: {
-    default: "Aestora — Medical Aesthetics",
+    default: "Aestora — Professional Beauty & Aesthetic Equipment",
     template: "%s · Aestora",
   },
   description:
-    "Clinical protocols for body contouring, lymphatic drainage, microdermabrasion, and medical-grade skin. By appointment.",
+    "Commercial equipment for spas, salons, med spas, and clinics. Lymphatic, facial, contouring, tanning, and recovery machines. Financing available, subject to approval.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${sans.variable} ${serif.variable} ${mono.variable} h-full`}
-    >
-      <body className="clinic antialiased">
-        <Header />
-        <div className="stage">
-          <ChartIndex />
-          <div className="sheet">
-            <div className="sheet-inner">{children}</div>
-          </div>
-        </div>
-        <Footer />
+    <html lang="en" className={`${display.variable} ${sans.variable} h-full`}>
+      <body className="house antialiased">
+        <CartProvider>
+          <CompareProvider>
+            <Header />
+            <main>{children}</main>
+            <CompareBar />
+            <Footer />
+          </CompareProvider>
+        </CartProvider>
       </body>
     </html>
   );

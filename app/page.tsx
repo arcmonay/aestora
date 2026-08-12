@@ -1,90 +1,79 @@
 import Image from "next/image";
 import Link from "next/link";
-import { formatPrice, treatments } from "@/data/treatments";
+import { ProductGrid } from "@/components/ProductCard";
+import { getCollections, getFeaturedProducts, getHighTicket } from "@/lib/products";
 
 export default function Home() {
+  const departments = getCollections().filter((c) => c.handle !== "accessories" && c.handle !== "packages");
+  const featured = getHighTicket(8);
+  const sellers = getFeaturedProducts(8);
+
   return (
     <>
-      <p className="kicker">Intake · New chart</p>
-      <h1 className="display text-[2.4rem] sm:text-[3.1rem] max-w-3xl">
-        Protocols for contour, lymph, and skin.
-      </h1>
-      <p className="lede mt-4">
-        Aestora is a medical aesthetics clinic. Visits are charted like a
-        procedure: code, duration, field, and aftercare. No retail floor. No
-        walk-ins. You open a chart, we assign a room.
-      </p>
-
-      <table className="protocol-table">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Protocol</th>
-            <th>Dept</th>
-            <th>Time</th>
-            <th>From</th>
-          </tr>
-        </thead>
-        <tbody>
-          {treatments.slice(0, 8).map((t) => (
-            <tr key={t.slug}>
-              <td>
-                <code className="font-mono text-[0.72rem] text-[var(--cross)]">
-                  {t.code}
-                </code>
-              </td>
-              <td>
-                <Link href={`/treatments/${t.slug}`}>{t.name}</Link>
-              </td>
-              <td className="capitalize text-[var(--muted)]">{t.department}</td>
-              <td>{t.duration}</td>
-              <td>{formatPrice(t.price)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[var(--muted)]">
-        <Link href="/treatments">Full protocol list →</Link>
-      </p>
-
-      <div className="rooms">
-        <figure className="room">
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="kicker">Professional equipment house</p>
+          <h1>Elevate your business. Elevate your clients.</h1>
+          <p>
+            Professional beauty, wellness & aesthetic equipment built for modern spas, salons and clinics. Machines that earn their floor space.
+          </p>
+          <div className="cta-row">
+            <Link href="/shop" className="btn btn-brass">
+              Shop equipment
+            </Link>
+            <Link href="/business" className="btn btn-ghost light">
+              Explore professional solutions
+            </Link>
+          </div>
+        </div>
+        <div className="hero-visual">
           <Image
             src="/media/hall.jpg"
-            alt="Clinic corridor"
-            width={800}
-            height={500}
+            alt="Aestora equipment floor"
+            width={1400}
+            height={1600}
+            priority
           />
-          <figcaption>Rm 00 · Arrival</figcaption>
-        </figure>
-        <figure className="room">
-          <Image
-            src="/media/body.jpg"
-            alt="Body treatment room"
-            width={800}
-            height={500}
-          />
-          <figcaption>Rm 01 · Body contouring</figcaption>
-        </figure>
-        <figure className="room">
-          <Image
-            src="/media/face.jpg"
-            alt="Facial treatment"
-            width={800}
-            height={500}
-          />
-          <figcaption>Rm 02 · Skin</figcaption>
-        </figure>
-        <figure className="room">
-          <Image
-            src="/media/lymph.jpg"
-            alt="Lymphatic and facial work"
-            width={800}
-            height={500}
-          />
-          <figcaption>Rm 03 · Lymph</figcaption>
-        </figure>
+        </div>
+      </section>
+
+      <div className="bays">
+        {departments.map((d) => (
+          <Link key={d.handle} href={`/departments/${d.handle}`} className="bay">
+            <div>
+              <em>Bay {d.bay}</em>
+              <strong>{d.title}</strong>
+            </div>
+            <p className="card-desc">{d.description}</p>
+          </Link>
+        ))}
       </div>
+
+      <section className="section">
+        <div className="section-head">
+          <div>
+            <p className="kicker">High-ticket floor</p>
+            <h2 className="display text-4xl">Featured equipment</h2>
+          </div>
+          <Link href="/shop" className="btn btn-ghost">
+            All machines
+          </Link>
+        </div>
+        <ProductGrid products={featured} />
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="section-head">
+          <div>
+            <p className="kicker">In rooms now</p>
+            <h2 className="display text-4xl">Best sellers</h2>
+          </div>
+          <Link href="/financing" className="btn btn-ghost">
+            See payment options
+          </Link>
+        </div>
+        <ProductGrid products={sellers} />
+      </section>
     </>
   );
 }

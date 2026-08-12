@@ -1,5 +1,6 @@
 # Aestora
 
-Medical aesthetics clinic site — body contouring, lymphatic drainage, microdermabrasion, and related protocols.
+Professional beauty, wellness, and aesthetic equipment house.
 
-Repo: https://github.com/arcmonay/aestora
+- Site: https://aestora-liart.vercel.app
+- Repo: https://github.com/arcmonay/aestora
