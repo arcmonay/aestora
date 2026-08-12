@@ -8,28 +8,19 @@ const equipment = [
   { href: "/departments/body-lymphatic", label: "Body & Lymphatic" },
   { href: "/departments/facial", label: "Facial & Skincare" },
   { href: "/departments/body-contouring", label: "Body Contouring" },
-  { href: "/departments/massage-recovery", label: "Massage & Recovery" },
-  { href: "/departments/tanning", label: "Tanning" },
-  { href: "/departments/spa-salon", label: "Spa & Salon" },
-  { href: "/departments/nail-care", label: "Nail & Hand/Foot" },
-  { href: "/shop?collection=accessories", label: "Parts & Consumables" },
 ];
 
 const shop = [
   { href: "/shop", label: "All equipment" },
   { href: "/shop?sort=featured", label: "Best sellers" },
-  { href: "/shop?sort=new", label: "New arrivals" },
-  { href: "/shop?collection=packages", label: "Bundles" },
-  { href: "/shop?collection=accessories", label: "Accessories" },
-  { href: "/shop?collection=accessories", label: "Replacement parts" },
+  { href: "/shop?max=5000", label: "Under $5,000" },
 ];
 
 const business = [
   { href: "/business", label: "Build your business" },
-  { href: "/business/starter-spa", label: "Open a spa" },
-  { href: "/business/facial-studio", label: "Open a med spa" },
-  { href: "/business/tanning-salon", label: "Open a tanning salon" },
-  { href: "/business", label: "Equipment packages" },
+  { href: "/business/lymphatic-business", label: "Lymphatic room" },
+  { href: "/business/facial-studio", label: "Facial studio" },
+  { href: "/business/body-contouring", label: "Body room" },
   { href: "/financing", label: "Financing" },
   { href: "/quote", label: "Request a quote" },
 ];

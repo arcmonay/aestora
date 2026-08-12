@@ -32,7 +32,7 @@ export default async function ShopPage({ searchParams }: Props) {
         <p className="kicker">Floor</p>
         <h1 className="display text-4xl mb-2">Equipment</h1>
         <p className="lede mb-8">
-          {products.length} machines and parts. Filter by department, budget, or type a search such as “lymphatic drainage machine under $5,000”.
+          {products.length} machines. Each listing uses a catalog photo of that unit.
         </p>
         <ProductGrid products={products} />
       </div>

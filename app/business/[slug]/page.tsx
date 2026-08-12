@@ -41,8 +41,8 @@ export default async function PackagePage({ params }: PageProps<"/business/[slug
         <Link href="/financing" className="btn btn-ghost">
           Financing
         </Link>
-        <Link href="/shop?collection=packages" className="btn btn-ghost">
-          Shop packages
+        <Link href="/shop" className="btn btn-ghost">
+          Shop equipment
         </Link>
       </div>
       <p className="mt-6 text-sm text-[var(--muted)]">{financeDisclaimer()}</p>

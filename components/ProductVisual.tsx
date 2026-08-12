@@ -2,15 +2,9 @@ import Image from "next/image";
 import type { Product } from "@/lib/types";
 
 const fallback: Record<string, string> = {
-  "body-lymphatic": "/media/lymph.jpg",
-  facial: "/media/face.jpg",
-  "body-contouring": "/media/body.jpg",
-  "massage-recovery": "/media/body.jpg",
-  tanning: "/media/hall.jpg",
-  "spa-salon": "/media/consult.jpg",
-  "nail-care": "/media/face.jpg",
-  accessories: "/media/device.jpg",
-  packages: "/media/hall.jpg",
+  "body-lymphatic": "/media/catalog/presso.webp",
+  facial: "/media/catalog/hydra.webp",
+  "body-contouring": "/media/catalog/cavi.webp",
 };
 
 export function ProductVisual({
@@ -22,7 +16,7 @@ export function ProductVisual({
   priority?: boolean;
   className?: string;
 }) {
-  const src = fallback[product.collection] || "/media/hall.jpg";
+  const src = product.image || fallback[product.collection] || "/media/catalog/hydra.webp";
   return (
     <Image
       src={src}

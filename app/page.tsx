@@ -4,7 +4,7 @@ import { ProductGrid } from "@/components/ProductCard";
 import { getCollections, getFeaturedProducts, getHighTicket } from "@/lib/products";
 
 export default function Home() {
-  const departments = getCollections().filter((c) => c.handle !== "accessories" && c.handle !== "packages");
+  const departments = getCollections();
   const featured = getHighTicket(8);
   const sellers = getFeaturedProducts(8);
 
@@ -15,7 +15,7 @@ export default function Home() {
           <p className="kicker">Professional equipment house</p>
           <h1>Elevate your business. Elevate your clients.</h1>
           <p>
-            Professional beauty, wellness & aesthetic equipment built for modern spas, salons and clinics. Machines that earn their floor space.
+            Pressotherapy, hydrodermabrasion, cavitation, and cryolipolysis — each listing shows the machine on the invoice.
           </p>
           <div className="cta-row">
             <Link href="/shop" className="btn btn-brass">
@@ -28,8 +28,8 @@ export default function Home() {
         </div>
         <div className="hero-visual">
           <Image
-            src="/media/hall.jpg"
-            alt="Aestora equipment floor"
+            src="/media/catalog/hydra.webp"
+            alt="Hydrodermabrasion facial tower"
             width={1400}
             height={1600}
             priority

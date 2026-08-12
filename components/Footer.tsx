@@ -12,7 +12,6 @@ export function Footer() {
         <Link href="/departments/body-lymphatic">Body & lymphatic</Link>
         <Link href="/departments/facial">Facial</Link>
         <Link href="/departments/body-contouring">Body contouring</Link>
-        <Link href="/departments/tanning">Tanning</Link>
       </div>
       <div>
         <strong>Business</strong>

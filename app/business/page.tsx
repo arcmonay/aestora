@@ -11,7 +11,7 @@ export default function BusinessPage() {
       <p className="kicker">Business solutions</p>
       <h1 className="display text-4xl mt-2">Build your business</h1>
       <p className="lede mt-3 mb-10">
-        Aestora outfits rooms that have to earn. Packages combine machines, furniture, and starter parts into one freight plan for med spas, salons, massage studios, tanning floors, and recovery clinics.
+        Aestora outfits rooms that have to earn. Packages are the machines on the floor — pressotherapy, hydrodermabrasion, cavitation, cryolipolysis.
       </p>
       <div className="grid-4">
         {packages.map((pack) => (
