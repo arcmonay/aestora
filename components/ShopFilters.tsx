@@ -37,9 +37,9 @@ export function ShopFilters({ collections }: { collections: Collection[] }) {
 
   return (
     <aside className="filters">
-      <h2>Bay filter</h2>
+      <h2>Filter</h2>
       <button type="button" className={active === "all" ? "is-active" : ""} onClick={() => update({ collection: "all" })}>
-        All bays
+        All products
       </button>
       {collections.map((c) => (
         <button
@@ -48,7 +48,7 @@ export function ShopFilters({ collections }: { collections: Collection[] }) {
           className={active === c.handle ? "is-active" : ""}
           onClick={() => update({ collection: c.handle })}
         >
-          Bay {c.bay} · {c.title}
+          {c.title}
         </button>
       ))}
       <label className="mt-6 block">

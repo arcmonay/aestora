@@ -5,29 +5,24 @@ import { monthlyLabel } from "@/lib/finance";
 import type { Product } from "@/lib/types";
 
 export function ProductCard({ product }: { product: Product }) {
+  const onSale = Boolean(product.compareAtPrice && product.compareAtPrice > product.price);
+
   return (
-    <Link href={`/shop/${product.handle}`} className="plate">
-      <div className="plate-visual">
+    <Link href={`/shop/${product.handle}`} className="product-card">
+      <div className="product-media">
+        {onSale || product.featured ? <span className="sale-badge">Sale</span> : null}
         <ProductVisual product={product} />
       </div>
-      <div className="plate-body">
-        <p className="bay-tag">{product.equipmentType}</p>
-        <p className="machine-name">{product.title.replace("Aestora ", "")}</p>
-        <p className="card-desc">
-          {product.highlight}.{" "}
-          {product.warrantyYears ? `${product.warrantyYears}-year warranty.` : "Wear part."}
-        </p>
-        <div className="invoice-line">
+      <div className="product-meta">
+        <p className="product-title">{product.title.replace("Aestora ", "")}</p>
+        <div className="price-row">
           {product.quoteOnly ? (
-            <strong>Quote on request</strong>
+            <span className="now">Request a quote</span>
           ) : (
             <>
-              <strong>{monthlyLabel(product.monthly)}</strong>
-              <span>
-                {formatMoney(product.price)}
-                <br />
-                {product.inStock ? "In stock" : "Built to order"} · {product.warrantyYears} yr
-              </span>
+              <span className="now">{formatMoney(product.price)}</span>
+              {onSale ? <span className="was">{formatMoney(product.compareAtPrice!)}</span> : null}
+              <span className="mo">{monthlyLabel(product.monthly)}</span>
             </>
           )}
         </div>
@@ -38,7 +33,7 @@ export function ProductCard({ product }: { product: Product }) {
 
 export function ProductGrid({ products }: { products: Product[] }) {
   return (
-    <div className="ledger">
+    <div className="product-grid">
       {products.map((p) => (
         <ProductCard key={p.id} product={p} />
       ))}

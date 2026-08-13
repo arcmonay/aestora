@@ -12,13 +12,13 @@ export function AddToCartButton({ product }: { product: Product }) {
   if (product.quoteOnly) {
     return (
       <div className="cta-row">
-        <Link href={`/quote?machine=${product.handle}`} className="btn btn-brass">
+        <Link href={`/quote?machine=${product.handle}`} className="btn btn-teal">
           Request a quote
         </Link>
-        <Link href="/support" className="btn btn-ghost">
+        <Link href="/support" className="btn btn-outline">
           Talk to a specialist
         </Link>
-        <button type="button" className="btn btn-ghost" onClick={() => toggle(product.handle)}>
+        <button type="button" className="btn btn-outline" onClick={() => toggle(product.handle)}>
           {has(product.handle) ? "Added to compare" : "Compare"}
         </button>
       </div>
@@ -27,16 +27,16 @@ export function AddToCartButton({ product }: { product: Product }) {
 
   return (
     <div className="cta-row">
-      <button type="button" className="btn btn-ink" onClick={() => addItem(product.handle)}>
-        Add to bag
+      <button type="button" className="btn btn-teal" onClick={() => addItem(product.handle)}>
+        Add to cart
       </button>
-      <Link href="/financing" className="btn btn-brass">
+      <Link href="/financing" className="btn btn-outline">
         Financing options
       </Link>
-      <Link href={`/quote?machine=${product.handle}`} className="btn btn-ghost">
+      <Link href={`/quote?machine=${product.handle}`} className="btn btn-outline">
         Request a quote
       </Link>
-      <button type="button" className="btn btn-ghost" onClick={() => toggle(product.handle)}>
+      <button type="button" className="btn btn-outline" onClick={() => toggle(product.handle)}>
         {has(product.handle) ? "Added to compare" : "Compare"}
       </button>
     </div>

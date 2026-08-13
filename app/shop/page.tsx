@@ -24,19 +24,19 @@ export default async function ShopPage({ searchParams }: Props) {
   });
 
   return (
-    <div className="shop-layout">
-      <Suspense>
-        <ShopFilters collections={getCollections()} />
-      </Suspense>
-      <div className="section" style={{ paddingTop: "1.5rem" }}>
-        <div className="page-intro">
-          <p className="bay-tag">Full floor</p>
-          <h1 className="machine-name text-4xl mb-2">Equipment ledger</h1>
-          <p className="lede mb-2">
-            {products.length} units. Each listing uses a catalog photo of that machine.
+    <div className="page-width">
+      <div className="shop-layout">
+        <Suspense>
+          <ShopFilters collections={getCollections()} />
+        </Suspense>
+        <div>
+          <p className="eyebrow">Shop</p>
+          <h1 className="page-title">Professional spa equipment</h1>
+          <p className="lede" style={{ margin: "0.5rem 0 1.5rem" }}>
+            {products.length} products. Catalog photos match the unit on the invoice.
           </p>
+          <ProductGrid products={products} />
         </div>
-        <ProductGrid products={products} />
       </div>
     </div>
   );

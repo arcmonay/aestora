@@ -3,123 +3,149 @@ import Link from "next/link";
 import { ProductGrid } from "@/components/ProductCard";
 import { getCollections, getFeaturedProducts, getHighTicket } from "@/lib/products";
 
+const treatmentImages: Record<string, string> = {
+  "body-lymphatic": "/media/catalog/presso.webp",
+  facial: "/media/catalog/hydra.webp",
+  "body-contouring": "/media/catalog/cavi.webp",
+};
+
 export default function Home() {
   const departments = getCollections();
-  const featured = getHighTicket(6);
-  const sellers = getFeaturedProducts(4);
+  const bestsellers = getFeaturedProducts(8);
+  const featured = getHighTicket(4);
 
   return (
     <>
-      <section className="showroom" aria-label="Showroom">
-        <div className="showroom-frame" aria-hidden />
-        <div className="showroom-media">
-          <Image
-            src="/media/hero.jpg"
-            alt="Bright clinical treatment room with a prepared spa table"
-            fill
-            priority
-            quality={92}
-            sizes="100vw"
-          />
-        </div>
-        <div className="showroom-veil" aria-hidden />
-        <div className="showroom-plaque">
-          <p className="bay-tag">Limestone showroom · Machine bays</p>
-          <h1>Equipment for rooms that earn.</h1>
+      <section className="hero-banner">
+        <Image
+          src="/media/hero.jpg"
+          alt="Professional spa treatment room"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+        />
+        <div className="hero-overlay" aria-hidden />
+        <div className="hero-content">
+          <h1>Spa equipment for estheticians &amp; clinics</h1>
           <p>
-            Pressotherapy, hydrodermabrasion, cavitation, and cryolipolysis — catalog shots of the
-            unit on the invoice, specified for spa and clinic floors.
+            Hydrodermabrasion, body contouring, and lymphatic systems for professional rooms —
+            priced online, with financing options subject to approval.
           </p>
-          <div className="cta-row">
-            <Link href="/shop" className="btn btn-brass">
-              Enter the floor
+          <div className="btn-row">
+            <Link href="/shop" className="btn btn-teal">
+              Shop equipment
             </Link>
-            <Link href="/business" className="btn btn-ghost light">
-              Room packages
+            <Link href="/business" className="btn btn-outline light">
+              View packages
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="floor-index" aria-label="Machine bays">
-        <div className="floor-index-label">
-          <div>
-            <p className="bay-tag">Floor plan</p>
-            <strong>Three machine bays</strong>
+      <section className="section">
+        <div className="page-width">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Collections</p>
+              <h2>Shop by treatment type</h2>
+            </div>
+            <Link href="/shop" className="link-teal">
+              View all →
+            </Link>
           </div>
-          <p className="lede" style={{ margin: 0, fontSize: "0.85rem" }}>
-            Navigate by bay number — the same metaphor as a showroom walk.
-          </p>
+          <div className="treatment-grid">
+            {departments.map((d) => (
+              <Link key={d.handle} href={`/departments/${d.handle}`} className="treatment-card">
+                <Image
+                  src={treatmentImages[d.handle] || "/media/hero.jpg"}
+                  alt={d.title}
+                  fill
+                  sizes="(max-width: 980px) 100vw, 33vw"
+                />
+                <div className="veil" aria-hidden />
+                <div className="label">
+                  <strong>{d.title}</strong>
+                  <span>{d.description}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className="floor-bays">
-          {departments.map((d) => (
-            <Link key={d.handle} href={`/departments/${d.handle}`} className="floor-bay">
-              <span className="num">{d.bay}</span>
-              <div>
-                <h2>{d.title}</h2>
-                <p>{d.description}</p>
+      </section>
+
+      <section className="section section-cream">
+        <div className="page-width">
+          <div className="promo-band" style={{ background: "transparent" }}>
+            <div className="promo-copy">
+              <p className="eyebrow">New arrivals</p>
+              <h2>Professional devices for growing treatment menus</h2>
+              <p className="lede">
+                Explore high-demand platforms selected for daily commercial use — each listing shows
+                a catalog photo of the machine you receive.
+              </p>
+              <div className="btn-row" style={{ marginTop: "1.25rem" }}>
+                <Link href="/shop" className="btn btn-teal">
+                  See latest equipment
+                </Link>
               </div>
-              <span className="enter">Enter bay {d.bay}</span>
-            </Link>
-          ))}
+            </div>
+            <div className="promo-media" style={{ borderRadius: 4, overflow: "hidden" }}>
+              <Image
+                src="/media/lymph.jpg"
+                alt="Clinical aesthetic treatment in progress"
+                fill
+                sizes="(max-width: 980px) 100vw, 45vw"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="section-head">
-          <div>
-            <p className="bay-tag">High-ticket ledger</p>
-            <h2 className="machine-name text-4xl">Featured units</h2>
-          </div>
-          <Link href="/shop" className="btn btn-ghost">
-            Full floor
+      <section className="band-teal">
+        <h2>Business packages &amp; volume pricing</h2>
+        <p>
+          Outfit a facial, lymphatic, or body room with curated equipment sets. Ask about trade
+          pricing for multi-room openings.
+        </p>
+        <div className="btn-row" style={{ justifyContent: "center" }}>
+          <Link href="/business" className="btn btn-outline light">
+            Shop packages
           </Link>
-        </div>
-        <ProductGrid products={featured} />
-      </section>
-
-      <section className="protocol-strip">
-        <div className="protocol-copy">
-          <p className="bay-tag" style={{ color: "var(--brass-lit)" }}>
-            Protocol, not portrait
-          </p>
-          <h2>Machines photographed as sold.</h2>
-          <p>
-            Manufacturer catalog angles for the console you will receive — paired with clinical room
-            photography, not spa-lifestyle still life. Financing available through third-party
-            lenders, subject to approval.
-          </p>
-          <div className="cta-row">
-            <Link href="/financing" className="btn btn-brass">
-              Payment terms
-            </Link>
-            <Link href="/guides" className="btn btn-ghost light">
-              Buying guides
-            </Link>
-          </div>
-        </div>
-        <div className="protocol-media">
-          <Image
-            src="/media/lymph.jpg"
-            alt="Clinical aesthetic treatment with gloved hands and precision tool"
-            fill
-            sizes="(max-width: 980px) 100vw, 55vw"
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-head">
-          <div>
-            <p className="bay-tag">On the floor</p>
-            <h2 className="machine-name text-4xl">In rooms now</h2>
-          </div>
-          <Link href="/quote" className="btn btn-ghost">
+          <Link href="/quote" className="btn" style={{ background: "#fff", color: "#121212" }}>
             Request a quote
           </Link>
         </div>
-        <ProductGrid products={sellers} />
+      </section>
+
+      <section className="section">
+        <div className="page-width">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Best sellers</p>
+              <h2>Popular aesthetic devices</h2>
+            </div>
+            <Link href="/shop" className="link-teal">
+              Shop all →
+            </Link>
+          </div>
+          <ProductGrid products={bestsellers} />
+        </div>
+      </section>
+
+      <section className="section section-cream">
+        <div className="page-width">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">High-ticket floor</p>
+              <h2>Featured equipment</h2>
+            </div>
+            <Link href="/financing" className="link-teal">
+              Financing options →
+            </Link>
+          </div>
+          <ProductGrid products={featured} />
+        </div>
       </section>
     </>
   );

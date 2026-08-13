@@ -24,12 +24,14 @@ export default async function DepartmentPage({
 
   return (
     <section className="section">
-      <div className="page-intro">
-        <p className="bay-tag">Bay {collection.bay}</p>
-        <h1 className="machine-name text-4xl mt-2">{collection.title}</h1>
-        <p className="lede mt-3 mb-2">{collection.description}</p>
+      <div className="page-width">
+        <p className="eyebrow">Collection</p>
+        <h1 className="page-title">{collection.title}</h1>
+        <p className="lede" style={{ margin: "0.5rem 0 1.75rem" }}>
+          {collection.description}
+        </p>
+        <ProductGrid products={products} />
       </div>
-      <ProductGrid products={products} />
     </section>
   );
 }

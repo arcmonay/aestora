@@ -15,10 +15,10 @@ export function CompareBar() {
         Compare ({handles.length}/3): {names.join(" · ")}
       </span>
       <span className="cta-row" style={{ margin: 0 }}>
-        <Link href="/compare" className="btn btn-brass">
+        <Link href="/compare" className="btn btn-teal">
           Open comparison
         </Link>
-        <button type="button" className="btn btn-ghost light" onClick={clear}>
+        <button type="button" className="btn btn-outline light" onClick={clear}>
           Clear
         </button>
       </span>

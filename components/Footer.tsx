@@ -2,25 +2,25 @@ import Link from "next/link";
 
 const columns = [
   {
-    title: "Bays",
+    title: "Shop",
     links: [
-      { href: "/departments/body-lymphatic", label: "Bay 01 · Lymphatic" },
-      { href: "/departments/facial", label: "Bay 02 · Facial" },
-      { href: "/departments/body-contouring", label: "Bay 03 · Contour" },
-      { href: "/shop", label: "Full floor" },
+      { href: "/shop", label: "All equipment" },
+      { href: "/departments/facial", label: "Hydrodermabrasion" },
+      { href: "/departments/body-contouring", label: "Body contouring" },
+      { href: "/departments/body-lymphatic", label: "Lymphatic" },
     ],
   },
   {
-    title: "Studio",
+    title: "Business",
     links: [
       { href: "/business", label: "Room packages" },
       { href: "/financing", label: "Financing" },
       { href: "/quote", label: "Request a quote" },
-      { href: "/compare", label: "Compare units" },
+      { href: "/compare", label: "Compare" },
     ],
   },
   {
-    title: "Service",
+    title: "Help",
     links: [
       { href: "/guides", label: "Buying guides" },
       { href: "/warranty", label: "Warranty" },
@@ -32,20 +32,17 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="slab">
-      <div className="slab-grid">
+    <footer className="site-footer">
+      <div className="footer-grid">
         <div>
-          <p className="slab-brand">
-            <span>Aes</span>
-            <span>tora</span>
-          </p>
-          <p className="slab-note">
-            Professional aesthetic equipment for spas, salons, and clinics. Machines photographed
-            as invoiced — pressotherapy, hydrodermabrasion, cavitation, cryolipolysis.
+          <p className="footer-brand">Aestora</p>
+          <p className="footer-note">
+            Professional beauty and aesthetic equipment for spas, salons, and clinics. Commercial
+            machines with catalog photos that match the unit on the invoice.
           </p>
         </div>
         {columns.map((col) => (
-          <nav key={col.title} className="slab-col" aria-label={col.title}>
+          <nav key={col.title} className="footer-col" aria-label={col.title}>
             <h3>{col.title}</h3>
             {col.links.map((link) => (
               <Link key={link.label} href={link.href}>
@@ -55,10 +52,9 @@ export function Footer() {
           </nav>
         ))}
       </div>
-      <p className="slab-legal">
+      <p className="footer-legal">
         © 2025 Aestora. All rights reserved. Financing is offered through third-party lenders,
-        subject to approval. Equipment is sold for professional use where indicated. Not a medical
-        device marketplace for unlicensed practice.
+        subject to approval. Equipment is sold for professional use where indicated.
       </p>
     </footer>
   );
