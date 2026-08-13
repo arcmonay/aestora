@@ -5,72 +5,118 @@ import { getCollections, getFeaturedProducts, getHighTicket } from "@/lib/produc
 
 export default function Home() {
   const departments = getCollections();
-  const featured = getHighTicket(8);
-  const sellers = getFeaturedProducts(8);
+  const featured = getHighTicket(6);
+  const sellers = getFeaturedProducts(4);
 
   return (
     <>
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="kicker">Professional equipment house</p>
-          <h1>Elevate your business. Elevate your clients.</h1>
+      <section className="showroom" aria-label="Showroom">
+        <div className="showroom-frame" aria-hidden />
+        <div className="showroom-media">
+          <Image
+            src="/media/hero.jpg"
+            alt="Bright clinical treatment room with a prepared spa table"
+            fill
+            priority
+            quality={92}
+            sizes="100vw"
+          />
+        </div>
+        <div className="showroom-veil" aria-hidden />
+        <div className="showroom-plaque">
+          <p className="bay-tag">Limestone showroom · Machine bays</p>
+          <h1>Equipment for rooms that earn.</h1>
           <p>
-            Pressotherapy, hydrodermabrasion, cavitation, and cryolipolysis — each listing shows the machine on the invoice.
+            Pressotherapy, hydrodermabrasion, cavitation, and cryolipolysis — catalog shots of the
+            unit on the invoice, specified for spa and clinic floors.
           </p>
           <div className="cta-row">
             <Link href="/shop" className="btn btn-brass">
-              Shop equipment
+              Enter the floor
             </Link>
             <Link href="/business" className="btn btn-ghost light">
-              Explore professional solutions
+              Room packages
             </Link>
           </div>
         </div>
-        <div className="hero-visual">
-          <Image
-            src="/media/hero.jpg"
-            alt="Bright modern spa treatment room with a prepared massage table"
-            fill
-            priority
-            quality={90}
-            sizes="(max-width: 980px) 100vw, 45vw"
-          />
-        </div>
       </section>
 
-      <div className="bays">
-        {departments.map((d) => (
-          <Link key={d.handle} href={`/departments/${d.handle}`} className="bay">
-            <div>
-              <em>Bay {d.bay}</em>
-              <strong>{d.title}</strong>
-            </div>
-            <p className="card-desc">{d.description}</p>
-          </Link>
-        ))}
-      </div>
+      <section className="floor-index" aria-label="Machine bays">
+        <div className="floor-index-label">
+          <div>
+            <p className="bay-tag">Floor plan</p>
+            <strong>Three machine bays</strong>
+          </div>
+          <p className="lede" style={{ margin: 0, fontSize: "0.85rem" }}>
+            Navigate by bay number — the same metaphor as a showroom walk.
+          </p>
+        </div>
+        <div className="floor-bays">
+          {departments.map((d) => (
+            <Link key={d.handle} href={`/departments/${d.handle}`} className="floor-bay">
+              <span className="num">{d.bay}</span>
+              <div>
+                <h2>{d.title}</h2>
+                <p>{d.description}</p>
+              </div>
+              <span className="enter">Enter bay {d.bay}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="section">
         <div className="section-head">
           <div>
-            <p className="kicker">High-ticket floor</p>
-            <h2 className="display text-4xl">Featured equipment</h2>
+            <p className="bay-tag">High-ticket ledger</p>
+            <h2 className="machine-name text-4xl">Featured units</h2>
           </div>
           <Link href="/shop" className="btn btn-ghost">
-            All machines
+            Full floor
           </Link>
         </div>
         <ProductGrid products={featured} />
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="protocol-strip">
+        <div className="protocol-copy">
+          <p className="bay-tag" style={{ color: "var(--brass-lit)" }}>
+            Protocol, not portrait
+          </p>
+          <h2>Machines photographed as sold.</h2>
+          <p>
+            Manufacturer catalog angles for the console you will receive — paired with clinical room
+            photography, not spa-lifestyle still life. Financing available through third-party
+            lenders, subject to approval.
+          </p>
+          <div className="cta-row">
+            <Link href="/financing" className="btn btn-brass">
+              Payment terms
+            </Link>
+            <Link href="/guides" className="btn btn-ghost light">
+              Buying guides
+            </Link>
+          </div>
+        </div>
+        <div className="protocol-media">
+          <Image
+            src="/media/lymph.jpg"
+            alt="Clinical aesthetic treatment with gloved hands and precision tool"
+            fill
+            sizes="(max-width: 980px) 100vw, 55vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+      </section>
+
+      <section className="section">
         <div className="section-head">
           <div>
-            <p className="kicker">In rooms now</p>
-            <h2 className="display text-4xl">Best sellers</h2>
+            <p className="bay-tag">On the floor</p>
+            <h2 className="machine-name text-4xl">In rooms now</h2>
           </div>
-          <Link href="/financing" className="btn btn-ghost">
-            See payment options
+          <Link href="/quote" className="btn btn-ghost">
+            Request a quote
           </Link>
         </div>
         <ProductGrid products={sellers} />

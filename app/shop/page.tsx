@@ -29,11 +29,13 @@ export default async function ShopPage({ searchParams }: Props) {
         <ShopFilters collections={getCollections()} />
       </Suspense>
       <div className="section" style={{ paddingTop: "1.5rem" }}>
-        <p className="kicker">Floor</p>
-        <h1 className="display text-4xl mb-2">Equipment</h1>
-        <p className="lede mb-8">
-          {products.length} machines. Each listing uses a catalog photo of that unit.
-        </p>
+        <div className="page-intro">
+          <p className="bay-tag">Full floor</p>
+          <h1 className="machine-name text-4xl mb-2">Equipment ledger</h1>
+          <p className="lede mb-2">
+            {products.length} units. Each listing uses a catalog photo of that machine.
+          </p>
+        </div>
         <ProductGrid products={products} />
       </div>
     </div>

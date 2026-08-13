@@ -4,12 +4,43 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
 
-const nav = [
-  { href: "/shop", label: "Equipment", match: ["/shop", "/departments", "/compare"] },
-  { href: "/business", label: "Business", match: ["/business"] },
-  { href: "/financing", label: "Financing", match: ["/financing"] },
-  { href: "/guides", label: "Guides", match: ["/guides"] },
-  { href: "/support", label: "Support", match: ["/support", "/warranty", "/faq"] },
+const plaques = [
+  {
+    href: "/departments/body-lymphatic",
+    bay: "01",
+    label: "Lymphatic",
+    match: ["/departments/body-lymphatic"],
+  },
+  {
+    href: "/departments/facial",
+    bay: "02",
+    label: "Facial",
+    match: ["/departments/facial"],
+  },
+  {
+    href: "/departments/body-contouring",
+    bay: "03",
+    label: "Contour",
+    match: ["/departments/body-contouring"],
+  },
+  {
+    href: "/shop",
+    bay: "Floor",
+    label: "All units",
+    match: ["/shop", "/compare"],
+  },
+  {
+    href: "/business",
+    bay: "Rooms",
+    label: "Packages",
+    match: ["/business"],
+  },
+  {
+    href: "/financing",
+    bay: "Terms",
+    label: "Financing",
+    match: ["/financing"],
+  },
 ];
 
 export function Header() {
@@ -17,30 +48,39 @@ export function Header() {
   const { count } = useCart();
 
   return (
-    <header className="atelier">
-      <div className="atelier-bar">
-        <Link href="/" className="atelier-brand">
-          <strong>Aestora</strong>
-          <span>Equipment house</span>
+    <header className="bayhead">
+      <div className="bayhead-inner">
+        <Link href="/" className="bay-mark" aria-label="Aestora home">
+          <strong>
+            Aes
+            <br />
+            tora
+          </strong>
+          <em>Machine bays</em>
         </Link>
-        <nav className="atelier-nav" aria-label="Primary">
-          {nav.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={item.match.some((m) => pathname.startsWith(m)) ? "is-active" : ""}
-            >
-              {item.label}
-            </Link>
-          ))}
+
+        <nav className="bay-plaques" aria-label="Machine bays">
+          {plaques.map((item) => {
+            const active = item.match.some((m) => pathname === m || pathname.startsWith(`${m}/`));
+            return (
+              <Link
+                key={item.href + item.bay}
+                href={item.href}
+                className={`plaque${active ? " is-active" : ""}`}
+              >
+                <b>Bay {item.bay}</b>
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
         </nav>
-        <div className="atelier-tools">
-          <Link href="/quote" className="atelier-quote">
-            Request a quote
-          </Link>
-          <Link href="/cart" className="atelier-bag">
+
+        <div className="bay-desk">
+          <Link href="/quote">Quote</Link>
+          <Link href="/guides">Guides</Link>
+          <Link href="/cart" className="desk-bag">
             Bag
-            {count ? <em>{count}</em> : null}
+            {count ? <i>{count}</i> : null}
           </Link>
         </div>
       </div>

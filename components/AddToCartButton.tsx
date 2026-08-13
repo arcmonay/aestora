@@ -28,10 +28,10 @@ export function AddToCartButton({ product }: { product: Product }) {
   return (
     <div className="cta-row">
       <button type="button" className="btn btn-ink" onClick={() => addItem(product.handle)}>
-        Buy now
+        Add to bag
       </button>
       <Link href="/financing" className="btn btn-brass">
-        Finance this equipment
+        Financing options
       </Link>
       <Link href={`/quote?machine=${product.handle}`} className="btn btn-ghost">
         Request a quote

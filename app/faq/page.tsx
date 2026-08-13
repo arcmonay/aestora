@@ -26,10 +26,10 @@ const faqs = [
 export default function FaqPage() {
   return (
     <section className="section max-w-3xl mx-auto">
-      <p className="kicker">Resources</p>
-      <h1 className="display text-4xl mt-2 mb-8">FAQ</h1>
+      <p className="bay-tag">Resources</p>
+      <h1 className="machine-name text-4xl mt-2 mb-8">FAQ</h1>
       {faqs.map((f) => (
-        <div key={f.q} className="border-t border-[var(--line)] py-5">
+        <div key={f.q} className="border-t border-[var(--rule)] py-5">
           <h2 className="font-medium">{f.q}</h2>
           <p className="lede mt-2">{f.a}</p>
         </div>

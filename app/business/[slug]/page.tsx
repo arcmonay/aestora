@@ -23,12 +23,12 @@ export default async function PackagePage({ params }: PageProps<"/business/[slug
 
   return (
     <section className="section max-w-3xl mx-auto">
-      <p className="kicker">{pack.audience}</p>
-      <h1 className="display text-4xl mt-2">{pack.title}</h1>
+      <p className="bay-tag">{pack.audience}</p>
+      <h1 className="machine-name text-4xl mt-2">{pack.title}</h1>
       <p className="lede mt-3">{pack.summary}</p>
       <p className="mt-6 text-2xl">{formatMoney(pack.price)}</p>
       <p className="text-[var(--brass)]">{monthlyLabel(pack.monthly)}</p>
-      <h2 className="display text-2xl mt-10 mb-3">On the invoice</h2>
+      <h2 className="machine-name text-2xl mt-10 mb-3">On the invoice</h2>
       <ul className="leading-8">
         {pack.includes.map((item) => (
           <li key={item}>— {item}</li>

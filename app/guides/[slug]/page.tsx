@@ -18,8 +18,10 @@ export default async function GuidePage({ params }: PageProps<"/guides/[slug]">)
 
   return (
     <article className="prose-block">
-      <p className="kicker">{guide.category} · {guide.readMinutes} min</p>
-      <h1 className="display text-4xl mt-2">{guide.title}</h1>
+      <p className="bay-tag">
+        {guide.category} · {guide.readMinutes} min
+      </p>
+      <h1 className="machine-name text-4xl mt-2">{guide.title}</h1>
       <p className="lede mt-3">{guide.dek}</p>
       {guide.sections.map((s) => (
         <section key={s.heading}>

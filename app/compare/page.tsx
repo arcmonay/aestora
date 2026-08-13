@@ -34,7 +34,7 @@ export default function ComparePage() {
   if (!handles.length) {
     return (
       <section className="section">
-        <h1 className="display text-4xl">Compare machines</h1>
+        <h1 className="machine-name text-4xl">Compare machines</h1>
         <p className="lede mt-3">
           Add up to three units from any product page. This is for expensive equipment — not $20 bottles.
         </p>
@@ -48,7 +48,7 @@ export default function ComparePage() {
   return (
     <section className="section">
       <div className="section-head">
-        <h1 className="display text-4xl">Compare</h1>
+        <h1 className="machine-name text-4xl">Compare</h1>
         <button type="button" className="btn btn-ghost" onClick={clear}>
           Clear
         </button>
