@@ -28,11 +28,12 @@ export default function Home() {
         </div>
         <div className="hero-visual">
           <Image
-            src="/media/catalog/hydra.webp"
-            alt="Hydrodermabrasion facial tower"
-            width={1400}
-            height={1600}
+            src="/media/hero.jpg"
+            alt="Bright modern spa treatment room with a prepared massage table"
+            fill
             priority
+            quality={90}
+            sizes="(max-width: 980px) 100vw, 45vw"
           />
         </div>
       </section>

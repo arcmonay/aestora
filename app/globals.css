@@ -44,109 +44,106 @@ button, input, select, textarea { font: inherit; color: inherit; }
   flex-direction: column;
 }
 
-.plaque {
+.atelier {
   background: var(--ivory);
   border-bottom: 1px solid var(--line);
+  border-top: 3px solid var(--brass);
   position: sticky;
   top: 0;
   z-index: 40;
 }
 
-.plaque-top {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1.5rem 0.7rem;
+.atelier-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 2.25rem;
+  padding: 1rem 1.5rem;
 }
 
-.wordmark {
-  justify-self: center;
-  text-align: center;
+.atelier-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  white-space: nowrap;
 }
 
-.wordmark strong {
-  display: block;
+.atelier-brand strong {
   font-family: var(--font-display), Georgia, serif;
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
+  line-height: 1;
 }
 
-.wordmark span {
-  display: block;
-  margin-top: 0.15rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
+.atelier-brand span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--brass);
+  border-left: 1px solid var(--line);
+  padding-left: 0.7rem;
 }
 
-.plaque-side {
+.atelier-nav {
   display: flex;
-  gap: 1.1rem;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.plaque-side.right { justify-content: flex-end; }
-
-.plaque-side a:hover { color: var(--ink); }
-
-.mega {
-  display: flex;
-  justify-content: center;
-  gap: 1.75rem;
-  padding: 0.45rem 1.5rem 0.7rem;
-  border-top: 1px solid var(--line);
+  gap: 1.6rem;
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.mega details {
-  position: relative;
-}
-
-.mega summary {
-  list-style: none;
-  cursor: pointer;
   color: var(--muted);
 }
 
-.mega summary::-webkit-details-marker { display: none; }
-
-.mega summary:hover,
-.mega details[open] summary,
-.mega a.is-active { color: var(--ink); }
-
-.mega-panel {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: calc(100% + 0.55rem);
-  background: var(--ivory);
-  border: 1px solid var(--line);
-  min-width: 520px;
-  padding: 1.1rem 1.25rem 1.2rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.35rem 1.5rem;
-  box-shadow: 0 18px 40px rgba(26, 22, 18, 0.08);
+.atelier-nav a {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
 }
 
-.mega-panel a {
-  display: block;
-  padding: 0.35rem 0;
-  letter-spacing: 0.08em;
-  text-transform: none;
-  font-size: 0.82rem;
+.atelier-nav a:hover { color: var(--ink); }
+
+.atelier-nav a.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--brass);
 }
 
-.mega-panel a:hover { color: var(--brass); }
+.atelier-tools {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.atelier-quote {
+  color: var(--brass);
+}
+
+.atelier-quote:hover { color: var(--ink); }
+
+.atelier-bag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.atelier-bag:hover { color: var(--brass); }
+
+.atelier-bag em {
+  font-style: normal;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--ivory);
+  border-radius: 999px;
+  font-size: 0.62rem;
+  letter-spacing: 0;
+}
 
 .hero {
   display: grid;
@@ -193,8 +190,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero-visual img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 2.5rem;
+  object-fit: cover;
 }
 
 .cta-row {
@@ -473,32 +469,54 @@ button, input, select, textarea { font: inherit; color: inherit; }
   color: var(--muted);
 }
 
-.house-foot {
+.foot {
   margin-top: auto;
   background: var(--espresso);
   color: #d5cdc3;
-  padding: 2rem 1.5rem 1.4rem;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 1.5rem;
-  font-size: 0.82rem;
+  border-top: 3px solid var(--brass);
+  padding: 3rem 1.5rem 1.4rem;
 }
 
-.house-foot strong {
-  display: block;
+.foot-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.25rem 3rem;
+  padding-bottom: 2rem;
+}
+
+.foot-mark {
   font-family: var(--font-display), Georgia, serif;
-  color: var(--ivory);
-  letter-spacing: 0.16em;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  color: var(--ivory);
+  line-height: 1;
 }
 
-.house-foot a { display: block; padding: 0.2rem 0; color: #c9c0b5; }
+.foot-statement {
+  max-width: 34rem;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #b3aa9f;
+}
 
-.house-foot a:hover { color: var(--brass-soft); }
+.foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  border-top: 1px solid #3a342e;
+  padding: 1rem 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c9c0b5;
+}
 
-.legal {
-  grid-column: 1 / -1;
+.foot-links a:hover { color: var(--brass-soft); }
+
+.foot-legal {
   border-top: 1px solid #3a342e;
   padding-top: 0.9rem;
   color: #9a9187;
@@ -548,12 +566,23 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 
 @media (max-width: 980px) {
-  .plaque-top, .hero, .pdp, .shop-layout, .bays, .grid-4, .house-foot {
+  .hero, .pdp, .shop-layout, .bays, .grid-4 {
     grid-template-columns: 1fr;
   }
-  .plaque-side { display: none; }
-  .mega { flex-wrap: wrap; justify-content: flex-start; }
-  .mega-panel { min-width: 280px; grid-template-columns: 1fr; }
+  .atelier-bar {
+    flex-wrap: wrap;
+    gap: 0.85rem 1.5rem;
+    padding: 0.85rem 1rem;
+  }
+  .atelier-quote { display: none; }
+  .atelier-nav {
+    order: 3;
+    flex-basis: 100%;
+    overflow-x: auto;
+    gap: 1.25rem;
+    padding-bottom: 0.15rem;
+  }
+  .atelier-nav a { white-space: nowrap; }
   .bay { border-right: 0; border-bottom: 1px solid var(--line); }
   .hero { min-height: auto; }
   .hero-visual { height: 42vh; }
